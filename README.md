@@ -116,7 +116,7 @@ adb reverse tcp:8081 tcp:8081
 ```
 ## Welcome to React Native
 
-<img src="https://github.com/SmartDoorSF/react-native-android/blob/master/TemplateProject/welcome.jpg" width="168">
+<img src="https://github.com/SmartDoorSF/react-native-android/blob/master/TemplateProject/welcome.jpg" width="186">
 
 References: 
 
