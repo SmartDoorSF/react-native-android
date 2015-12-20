@@ -44,3 +44,90 @@ open Android SDK Manager on Mac
 ```bash
 android
 ```
+
+SDK NDK path setup
+
+Point Gradle to Android SDK: 
+
+Either have ```$ANDROID_SDK``` and ```$ANDROID_NDK``` defined, or create a ```local.properties``` file in the root of your ```react-native``` checkout with the following contents:
+```bash
+sdk.dir=absolute_path_to_android_sdk
+ndk.dir=absolute_path_to_android_ndk
+```
+
+Ex. AwesomeProject
+
+#### Quick Start
+
+```
+$ npm install -g react-native-cli
+$ react-native init AwesomeProject
+```
+
+ISSUE:
+```bash
+> failed to find Build Tools revision 23.0.1
+```
+
+Solution:
+Install SDK build tools version 23.0.1 (in Android Manager)
+
+### React Native NPM module installion
+Under node_modules
+
+react-native
+
+```
+npm instal
+```
+
+## Building project
+
+Make sure there is one and only one device/emulator connected (online)
+
+Physical device:
+
+USB-debugging
+
+Connect your (Android) device then allow USB-debugging
+
+```
+adb devices
+```
+
+Build and run
+```
+react-native run-android
+```
+
+ISSUE:
+
+On device 
+```bash
+ReferenceError: Can't find variable:
+__fbBatchedBridge (line 1 in the generated bundle)
+```
+
+Solution:
+Start dev server
+
+Using adb reverse
+
+```
+adb reverse tcp:8081 tcp:8081
+```
+
+References: 
+
+1. [React Native Android Setup](http://facebook.github.io/react-native/docs/android-setup.html)
+
+2. [React Native on Android failed to find build tools](http://stackoverflow.com/questions/33155087/react-native-on-android-failed-to-find-build-tools)
+
+3. [React Native Android running on a device](http://facebook.github.io/react-native/docs/running-on-device-android.html#content)
+
+4. [React Native android build failed](http://stackoverflow.com/questions/32634352/react-native-android-build-failed)
+
+5. [React Native reference error can't find variable require line 1 in the generated bundle
+](http://stackoverflow.com/questions/33911453/react-native-referenceerror-cant-find-variable-require-line-1-in-the-genera)
+
+6. [Building React Native for Android](https://github.com/facebook/react-native/blob/master/ReactAndroid/README.md)
