@@ -114,9 +114,9 @@ Using adb reverse
 ```bash
 adb reverse tcp:8081 tcp:8081
 ```
+## Welcome to React Native
 
-
-## 
+![alt tag](https://github.com/SmartDoorSF/react-native-android/blob/master/TemplateProject/welcome.jpg)
 
 References: 
 
