@@ -72,12 +72,10 @@ ISSUE:
 Solution:
 Install SDK build tools version 23.0.1 (in Android Manager)
 
-### React Native NPM module installion
-Under node_modules
+### React Native NPM module installation
+Under AwesomeProject/node_modules/react-native
 
-react-native
-
-```
+```bash
 npm instal
 ```
 
@@ -91,12 +89,12 @@ USB-debugging
 
 Connect your (Android) device then allow USB-debugging
 
-```
+```bash
 adb devices
 ```
 
 Build and run
-```
+```bash
 react-native run-android
 ```
 
@@ -113,9 +111,12 @@ Start dev server
 
 Using adb reverse
 
-```
+```bash
 adb reverse tcp:8081 tcp:8081
 ```
+
+
+## 
 
 References: 
 
