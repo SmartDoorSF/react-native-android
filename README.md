@@ -118,6 +118,42 @@ adb reverse tcp:8081 tcp:8081
 
 <img src="https://github.com/SmartDoorSF/react-native-android/blob/master/TemplateProject/welcome.jpg" width="186">
 
+## TODO:
+Learn how to use Android Emulator
+
+Style guide
+
+Interactive with Native API
+
+## ISSUES
+
+Watcher took too long to load
+
+Installing watchman on OSX
+
+```bash
+$ brew update
+$ brew install watchman
+```
+
+```bash
+watchman shutdown-server
+brew update
+brew reinstall watchman
+```
+
+## Developer tooling 
+
+React Developer tools
+
+### Live code reloading
+
+```bash 
+react-native run-android
+```
+will start the Node server which enable live code reloading
+
+
 References: 
 
 1. [React Native Android Setup](http://facebook.github.io/react-native/docs/android-setup.html)
@@ -132,3 +168,5 @@ References:
 ](http://stackoverflow.com/questions/33911453/react-native-referenceerror-cant-find-variable-require-line-1-in-the-genera)
 
 6. [Building React Native for Android](https://github.com/facebook/react-native/blob/master/ReactAndroid/README.md)
+
+7. [Facebook watchman troubleshootingc](https://facebook.github.io/watchman/docs/troubleshooting.html)
