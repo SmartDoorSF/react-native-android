@@ -1,0 +1,15 @@
+{
+  "name": "module_template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.android.js",
+  "dependencies": {
+    "react-native": "^0.17.0"
+  },
+  "scripts": {
+    "start": "react-native start"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}
