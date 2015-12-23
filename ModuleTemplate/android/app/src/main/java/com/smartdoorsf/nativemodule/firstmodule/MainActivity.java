@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "TodoLite";
 
+    private ReactInstanceManager mReactInstanceManager;
+    private ReactRootView mReactRootView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

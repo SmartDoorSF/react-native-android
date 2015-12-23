@@ -9,7 +9,6 @@
   "scripts": {
     "start": "react-native start"
   },
-  "devDependencies": {},
   "author": "",
   "license": "ISC"
 }
