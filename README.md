@@ -153,7 +153,6 @@ react-native run-android
 ```
 will start the Node server which enable live code reloading
 
-
 References: 
 
 1. [React Native Android Setup](http://facebook.github.io/react-native/docs/android-setup.html)
