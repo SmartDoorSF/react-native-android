@@ -1,5 +1,6 @@
 package com.blemodule;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
@@ -9,18 +10,27 @@ import android.preference.DialogPreference;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class ListActivity extends ActionBarActivity implements DeviceListFragment.OnFragmentInteractionListener  {
+// React Native
+import com.facebook.react.LifecycleState;
+import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.ReactRootView;
+import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
+import com.facebook.react.shell.MainReactPackage;
 
+public class ListActivity extends ActionBarActivity implements DeviceListFragment.OnFragmentInteractionListener  {
 
     private DeviceListFragment mDeviceListFragment;
     private BluetoothAdapter BTAdapter;
 
+    // For React Native
+    private ReactInstanceManager mReactInstanceManager;
+    private ReactRootView mReactRootView;
 
     public static int REQUEST_BLUETOOTH = 1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

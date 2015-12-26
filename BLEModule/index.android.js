@@ -4,6 +4,8 @@
  */
 'use strict';
 
+var ScanButton = require('./js/button');
+
 var React = require('react-native');
 var {
   AppRegistry,
