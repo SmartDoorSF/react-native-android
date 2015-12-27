@@ -4,7 +4,9 @@ var {
     Platform,
     TouchableHighlight,
     TouchableNativeFeedback,
-    StyleSheet
+    StyleSheet,
+    View,
+    Text
 } = React;
 
 var SampleButton = React.createClass({
@@ -23,7 +25,6 @@ var SampleButton = React.createClass({
               </Text>
               <TouchableElement
                 onPress={this.buttonClicked.bind(this)}>
-                <Text>Button!</Text>
               </TouchableElement>
             </View>
         )
