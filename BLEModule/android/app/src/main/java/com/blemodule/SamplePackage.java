@@ -22,6 +22,7 @@ public class SamplePackage implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
+        // Register the module
         modules.add(new SampleModule(reactContext));
 
         return modules;

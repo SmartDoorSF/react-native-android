@@ -21,6 +21,6 @@ public class SampleModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "Customized Module";
+        return "CustomizedModule";
     }
 }

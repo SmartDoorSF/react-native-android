@@ -5,8 +5,11 @@
 'use strict';
 
 var SampleButton = require('./js/button');
+// var SampleModule = require('./js/sample_module');
 
-// TODO: onlyChild issue
+// Toast Example
+// SampleModule.show("Toast!");
+
 var React = require('react-native');
 var {
   AppRegistry,
@@ -16,7 +19,10 @@ var {
   Platform,
   TouchableHighlight,
   TouchableNativeFeedback,
+  NativeModules,
 } = React;
+
+NativeModules.CustomizedModule.show("Hello!");
 
 var BLEModule = React.createClass({
   render: function() {
