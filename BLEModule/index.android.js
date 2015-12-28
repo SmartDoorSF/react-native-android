@@ -4,7 +4,7 @@
  */
 'use strict';
 
-//var ScanButton = require('./js/button');
+var SampleButton = require('./js/button');
 
 // TODO: onlyChild issue
 var React = require('react-native');
@@ -36,33 +36,6 @@ var BLEModule = React.createClass({
     );
   }
 });
-
-
-var SampleButton = React.createClass({
-    buttonClicked: function() {
-        console.log('button clicked');
-    },
-    render: function() {
-        var TouchableElement = TouchableHighlight;
-        if (Platform.OS === 'android') {
-            TouchableElement = TouchableNativeFeedback;
-        }
-        return (
-            <View style={styles.container}>
-              <Text style={styles.welcome}>
-                A sample button/scanning bluetooth device!
-              </Text>
-              <TouchableElement
-                onPress={this.buttonClicked.bind(this)}>
-                <View>
-                    <Text>Toggle</Text>
-                </View>
-              </TouchableElement>
-            </View>
-        )
-    }
-})
-
 
 
 var styles = StyleSheet.create({

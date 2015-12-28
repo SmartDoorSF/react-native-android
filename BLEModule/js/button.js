@@ -24,7 +24,10 @@ var SampleButton = React.createClass({
                 A sample button/scanning bluetooth device!
               </Text>
               <TouchableElement
-                onPress={this.buttonClicked.bind(this)}>
+                onPress={this.buttonClicked}>
+                <View>
+                    <Text>SCAN</Text>
+                </View>
               </TouchableElement>
             </View>
         )

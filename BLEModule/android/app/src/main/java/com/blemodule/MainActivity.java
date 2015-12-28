@@ -25,6 +25,10 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
+
+// Toast
+import com.blemodule.ToastModule;
+
 //AppCompatActivity
 
 //public class MainActivity extends ActionBarActivity implements DeviceListFragment.OnFragmentInteractionListener  {
@@ -48,6 +52,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
+                .addPackage(new ToastPackage(this))
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

@@ -23,6 +23,13 @@ Solution
 </TouchableHighlight>
 ```
 
+3. bind method warning
+
+Warning:
+React bind target for you automatically
+
+
+
 References:
 
 1. [RTCNetwork function issue](https://github.com/facebook/react-native/issues/4488)
@@ -34,3 +41,6 @@ References:
 4. [React Native TouchableNativeFeedback Invariant Violation invalid prop `type` of value](https://github.com/facebook/react-native/issues/3413)
 
 5. [React Native Button Example](https://gist.github.com/jgable/43391acf85ccdbf249bc)
+
+6. [React Native press and hold button actions](http://browniefed.com/blog/2015/08/22/react-native-press-and-hold-button-actions/)
+
