@@ -27,7 +27,6 @@ import android.view.MenuItem;
 
 
 // Toast
-import com.blemodule.ToastModule;
 
 //AppCompatActivity
 
@@ -52,7 +51,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setBundleAssetName("index.android.bundle")
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
-                .addPackage(new ToastPackage(this))
+                .addPackage(new SamplePackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();
