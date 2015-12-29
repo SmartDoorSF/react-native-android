@@ -8,7 +8,6 @@ var SampleButton = require('./js/button');
 // var SampleModule = require('./js/sample_module');
 
 // Toast Example
-// SampleModule.show("Toast!");
 
 var React = require('react-native');
 var {
