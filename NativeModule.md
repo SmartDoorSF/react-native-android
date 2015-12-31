@@ -2,6 +2,20 @@
 
 Platform API or target module doesn`t exist in  React Native yet
 
+# Notes
+
+Creating Android modules:
+
+"Annotate the function that you want to make available to JavaScript with @ReactMethod."
+
+```bash
+// Available as NativeModule.MyCustomModule.processString
+  @ReactNative
+  public void processingString(String input, Callback callback) {
+    callback.invoke(input.replace("Goodbye", "Hello"));
+  }
+```
+
 ```bash
 ReactContextBaseJavaModule
 ```

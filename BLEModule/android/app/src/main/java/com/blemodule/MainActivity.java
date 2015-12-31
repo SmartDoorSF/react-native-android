@@ -37,7 +37,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
     private ReactRootView mReactRootView;
 
     // BT
-    private BluetoothAdapter BTAdapter;
+    private static BluetoothAdapter BTAdapter;
 
     public static int REQUEST_BLUETOOTH = 1;
 
@@ -81,6 +81,8 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
             startActivityForResult(enableBT, REQUEST_BLUETOOTH);
         }
 
+
+        // Perform
     }
 
     @Override

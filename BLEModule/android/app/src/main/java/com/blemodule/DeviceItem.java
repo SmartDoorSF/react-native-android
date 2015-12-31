@@ -2,6 +2,7 @@ package com.blemodule;
 
 /**
  * Created by ianzhang on 12/25/15.
+ * Reuse for JavaScript Module
  */
 public class DeviceItem {
 
