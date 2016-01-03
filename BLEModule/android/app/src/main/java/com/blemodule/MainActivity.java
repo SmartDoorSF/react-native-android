@@ -52,6 +52,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .setJSMainModuleName("index.android")
                 .addPackage(new MainReactPackage())
                 .addPackage(new SamplePackage())
+                .addPackage(new DevicePairPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)
                 .build();

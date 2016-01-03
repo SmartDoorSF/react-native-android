@@ -12,14 +12,17 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created by ianzhang on 12/31/15.
  * BLE pair implementation
  * TODO: Read React Method Doc
  */
 public class DevicePairModule extends ReactContextBaseJavaModule {
-    private static BluetoothAdapter BTAdapter;
-
+//    private static BluetoothAdapter BTAdapter;
+    private static BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
     // Setup Broadcast mode
     private final BroadcastReceiver bReceiver = new BroadcastReceiver() {
         @Override
@@ -39,13 +42,28 @@ public class DevicePairModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void listDevice(String message) {
-//        Toast.makeText(getReactApplicationContext(), message, 1000).show();
+    public void listDevice() {
+        // TODO Scan for devices and add them to the list
+        Set<BluetoothDevice> pairedDevices;
 
+        pairedDevices = BTAdapter.getBondedDevices();
+        if (pairedDevices.size() > 0) for (BluetoothDevice device : pairedDevices) {
+            DeviceItem newDevice = new DeviceItem(device.getName(), device.getAddress(), "false");
+//            deviceItemList.add(newDevice);
+            Log.d("Paired Device: ", device.getName());
+            Toast.makeText(getReactApplicationContext(), device.getName(), 500).show();
+        }
+
+        Log.d("DEVICELIST", "DevisceList Action!\n");
+    }
+
+    @ReactMethod
+    public void show(String message) {
+        Toast.makeText(getReactApplicationContext(), message, 1000).show();
     }
 
     @Override
     public String getName() {
-        return "bluetoothModule";
+        return "BluetoothModule";
     }
 }

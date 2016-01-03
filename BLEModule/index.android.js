@@ -22,6 +22,9 @@ var {
 } = React;
 
 NativeModules.CustomizedModule.show("Hello!");
+NativeModules.BluetoothModule.show("Bluetooth!");
+
+NativeModules.BluetoothModule.listDevice();
 
 var BLEModule = React.createClass({
   render: function() {

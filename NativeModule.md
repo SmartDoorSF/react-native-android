@@ -30,6 +30,19 @@ import java.util.HashMap;
 
 createViewMangers(ReactApplicationContext reactContext)
 
+## Declare BluetoothAdapter
+
+The "Correct" way
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+  BluetoothAdapter btAdapter = BluetoothAdapter.getDefaultAdapter();
+}
+
+with btAdapter = BluetoothAdapter.getDefaultAdapter();
+```
+
 References:
 
 1. [React Native native modules android](https://facebook.github.io/react-native/docs/native-modules-android.html#content)
