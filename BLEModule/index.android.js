@@ -23,9 +23,16 @@ var {
 
 NativeModules.CustomizedModule.show("Hello!");
 NativeModules.BluetoothModule.show("Bluetooth!");
-
 NativeModules.BluetoothModule.listDevice();
 
+NativeModules.BluetoothModule.listDeviceCB(
+    (msg) => {
+        console.log(msg);
+    },
+    (deviceName) => {
+        console.log("pairedDevice: " + deviceName);
+    }
+);
 var BLEModule = React.createClass({
   render: function() {
     return (

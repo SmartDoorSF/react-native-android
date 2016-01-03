@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.Callback;
 
 import java.util.List;
 import java.util.Set;
@@ -19,6 +20,7 @@ import java.util.Set;
  * Created by ianzhang on 12/31/15.
  * BLE pair implementation
  * TODO: Read React Method Doc
+ *       Return variable or pass values back through callback or Promise?
  */
 public class DevicePairModule extends ReactContextBaseJavaModule {
 //    private static BluetoothAdapter BTAdapter;
@@ -60,6 +62,21 @@ public class DevicePairModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void show(String message) {
         Toast.makeText(getReactApplicationContext(), message, 1000).show();
+    }
+
+    @ReactMethod
+    // Use Callback
+    public void listDeviceCB(Callback errorCallback, Callback successCallback) {
+        try {
+            Set<BluetoothDevice> pairedDevices;
+
+            pairedDevices = BTAdapter.getBondedDevices();
+            if (pairedDevices.size() > 0) for (BluetoothDevice device : pairedDevices) {
+                successCallback.invoke(device.getName());
+            }
+        } catch (IllegalArgumentException e) {
+            errorCallback.invoke(e.getMessage());
+        }
     }
 
     @Override
