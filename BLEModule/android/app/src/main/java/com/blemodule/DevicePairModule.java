@@ -21,6 +21,7 @@ import java.util.Set;
  * BLE pair implementation
  * TODO: Read React Method Doc
  *       Return variable or pass values back through callback or Promise?
+ *       What are valid datatypes?
  */
 public class DevicePairModule extends ReactContextBaseJavaModule {
 //    private static BluetoothAdapter BTAdapter;
