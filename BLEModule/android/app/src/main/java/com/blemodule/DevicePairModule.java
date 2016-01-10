@@ -2,6 +2,7 @@ package com.blemodule;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.le.BluetoothLeAdvertiser;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -45,7 +46,7 @@ public class DevicePairModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void listDevice() {
+    public void connect() {
         // TODO Scan for devices and add them to the list
         Set<BluetoothDevice> pairedDevices;
 
@@ -58,6 +59,8 @@ public class DevicePairModule extends ReactContextBaseJavaModule {
         }
 
         Log.d("DEVICELIST", "DevisceList Action!\n");
+
+//        Set<BluetoothAdapter> socketDevices;
     }
 
     @ReactMethod

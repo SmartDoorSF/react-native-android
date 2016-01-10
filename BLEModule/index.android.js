@@ -23,7 +23,7 @@ var {
 
 NativeModules.CustomizedModule.show("Hello!");
 NativeModules.BluetoothModule.show("Bluetooth!");
-NativeModules.BluetoothModule.listDevice();
+NativeModules.BluetoothModule.connect();
 
 NativeModules.BluetoothModule.listDeviceCB(
     (msg) => {
