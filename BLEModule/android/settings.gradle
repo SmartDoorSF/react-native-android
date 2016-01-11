@@ -1,3 +1,3 @@
 rootProject.name = 'BLEModule'
 
-include ':app'
+include ':app', ':android-beacon-library-2.7'
