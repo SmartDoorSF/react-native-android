@@ -25,6 +25,9 @@ NativeModules.CustomizedModule.show("Hello!");
 NativeModules.BluetoothModule.show("Bluetooth!");
 NativeModules.BluetoothModule.connect();
 
+// AltBeacon
+console.log("loadNativeModule: ", NativeModules.RNABeacon);
+
 NativeModules.BluetoothModule.listDeviceCB(
     (msg) => {
         console.log(msg);

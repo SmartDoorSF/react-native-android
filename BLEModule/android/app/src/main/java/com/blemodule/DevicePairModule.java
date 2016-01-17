@@ -17,6 +17,8 @@ import com.facebook.react.bridge.Callback;
 import java.util.List;
 import java.util.Set;
 
+import org.altbeacon.beacon.BeaconManager;
+
 /**
  * Created by ianzhang on 12/31/15.
  * BLE pair implementation

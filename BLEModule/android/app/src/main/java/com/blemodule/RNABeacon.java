@@ -1,6 +1,13 @@
 package com.blemodule;
 
-//import org.altbeacon.beacon.Beacon;
+import android.bluetooth.le.AdvertiseCallback;
+import android.bluetooth.le.AdvertiseSettings;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.RemoteException;
+import android.support.annotation.Nullable;
+
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
@@ -16,12 +23,25 @@ import com.facebook.react.bridge.WritableNativeMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import org.altbeacon.beacon.Beacon;
+import org.altbeacon.beacon.BeaconConsumer;
+import org.altbeacon.beacon.BeaconManager;
+import org.altbeacon.beacon.BeaconParser;
 import org.altbeacon.beacon.BeaconTransmitter;
+import org.altbeacon.beacon.RangeNotifier;
+import org.altbeacon.beacon.Region;
+import org.altbeacon.beacon.startup.BootstrapNotifier;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Created by ianzhang on 1/10/16.
+ * Created by ianzhang on 1/17/16.
  */
-public class RNABeacon extends ReactContextBaseJavaModule{
+public class RNABeacon extends ReactContextBaseJavaModule {
     @Override
     public String getName() {
         return "RNABeacon";
@@ -77,7 +97,7 @@ public class RNABeacon extends ReactContextBaseJavaModule{
                 .setId2(minor)
                 .setId3(major)
                 .setManufacturer(manufacturer)
-                .setTxPower(-59)                            // why 59?
+                .setTxPower(-59)
                 .setDataFields(data)
                 .build();
         BeaconParser beaconParser = new BeaconParser()

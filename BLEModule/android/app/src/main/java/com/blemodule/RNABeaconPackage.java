@@ -8,11 +8,13 @@ import com.facebook.react.uimanager.ViewManager;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
- * Created by ianzhang on 1/13/16.
+ * Created by ianzhang on 1/17/16.
  */
-public class RNABeaconPackage  implements ReactPackage {
+public class RNABeaconPackage implements ReactPackage {
     private android.content.Context applicationContext = null;
+//
     public RNABeaconPackage(android.content.Context applicationContext){
         this.applicationContext = applicationContext;
     }
