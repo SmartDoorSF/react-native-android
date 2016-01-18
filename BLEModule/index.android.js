@@ -5,10 +5,8 @@
 'use strict';
 
 var SampleButton = require('./js/button');
-// var SampleModule = require('./js/sample_module');
 
-// Toast Example
-
+//var Button = require('react-native-button');
 var React = require('react-native');
 var {
   AppRegistry,
@@ -19,24 +17,40 @@ var {
   TouchableHighlight,
   TouchableNativeFeedback,
   NativeModules,
+  DeviceEventEmitter,
 } = React;
 
 NativeModules.CustomizedModule.show("Hello!");
 NativeModules.BluetoothModule.show("Bluetooth!");
-NativeModules.BluetoothModule.connect();
+//NativeModules.BluetoothModule.connect();
+
+//NativeModules.BluetoothModule.listDeviceCB(
+//    (msg) => {
+//        console.log(msg);
+//    },
+//    (deviceName) => {
+//        console.log("pairedDevice: " + deviceName);
+//    }
+//);
 
 // AltBeacon
-console.log("loadNativeModule: ", NativeModules.RNABeacon);
+var RNABeacon = NativeModules.RNABeacon;
+console.log("loadNativeModule: ", RNABeacon);
 
-NativeModules.BluetoothModule.listDeviceCB(
-    (msg) => {
-        console.log(msg);
-    },
-    (deviceName) => {
-        console.log("pairedDevice: " + deviceName);
-    }
-);
 var BLEModule = React.createClass({
+//  mixins: [responderMixin],             // use the mixin
+    componentWillMount: function() {
+        DeviceEventEmitter.addListener('startMonitoring', function(e: Event) {
+            console.log("startMonitoring!!!");
+            console.log("Event:", e); // null
+        });
+    },
+    componentDidMount: function() {
+        // Altbeacon searching
+        // Current BlueBean UUID is 0xFF10
+        var uuid = "A495FF10C5B14B44B5121370F02D74DE";
+        RNABeacon.startMonitoring(uuid);
+    },
   render: function() {
     return (
       <View style={styles.container}>
@@ -54,7 +68,6 @@ var BLEModule = React.createClass({
     );
   }
 });
-
 
 var styles = StyleSheet.create({
   container: {
@@ -76,3 +89,4 @@ var styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('BLEModule', () => BLEModule);
+//AppRegistry.registerComponent('BLEModule2',() => BLEModule2);

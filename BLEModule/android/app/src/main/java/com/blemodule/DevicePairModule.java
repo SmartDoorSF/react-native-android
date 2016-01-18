@@ -61,7 +61,6 @@ public class DevicePairModule extends ReactContextBaseJavaModule {
         }
 
         Log.d("DEVICELIST", "DevisceList Action!\n");
-
 //        Set<BluetoothAdapter> socketDevices;
     }
 

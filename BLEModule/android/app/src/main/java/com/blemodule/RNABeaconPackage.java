@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class RNABeaconPackage implements ReactPackage {
     private android.content.Context applicationContext = null;
-//
+
     public RNABeaconPackage(android.content.Context applicationContext){
         this.applicationContext = applicationContext;
     }
