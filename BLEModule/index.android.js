@@ -40,9 +40,12 @@ console.log("loadNativeModule: ", RNABeacon);
 var BLEModule = React.createClass({
 //  mixins: [responderMixin],             // use the mixin
     componentWillMount: function() {
-        DeviceEventEmitter.addListener('startMonitoring', function(e: Event) {
-            console.log("startMonitoring!!!");
-            console.log("Event:", e); // null
+//        DeviceEventEmitter.addListener('startMonitoring', function(e: Event) {
+//            console.log("startMonitoring!!!");
+//            console.log("Event:", e); // null
+//        });
+        DeviceEventEmitter.addListener('startMonitoring', function(data) {
+            console.log('What data? ', data);
         });
     },
     componentDidMount: function() {

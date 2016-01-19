@@ -1,5 +1,5 @@
 apply plugin: "com.android.application"
-//apply plugin: "com.android.library"
+
 /**
  * The react.gradle file registers two tasks: bundleDebugJsAndAssets and bundleReleaseJsAndAssets.
  * These basically call `react-native bundle` with the correct arguments during the Android build
@@ -55,7 +55,7 @@ android {
 
     defaultConfig {
         applicationId "com.blemodule"
-        minSdkVersion 16
+        minSdkVersion 18
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -81,4 +81,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.facebook.react:react-native:0.17.+'
     compile 'org.altbeacon:android-beacon-library:2+'
+    compile 'com.punchthrough.bean.sdk:sdk:1.0.1'           // minSdkVersion 18
 }

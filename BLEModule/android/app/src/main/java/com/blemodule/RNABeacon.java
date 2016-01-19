@@ -244,6 +244,7 @@ public class RNABeacon extends ReactContextBaseJavaModule {
         this.uuid = uuid;
         beaconManager = BeaconManager.getInstanceForApplication(applicationContext);
         beaconManager.bind(monitoringConsumer);
+//        WritableMap map = Arguments.createMap();
         sendEvent(context, "startMonitoring", null);
     }
 
