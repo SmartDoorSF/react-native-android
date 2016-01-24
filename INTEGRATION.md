@@ -48,3 +48,5 @@ References:
 4. [Android SD](https://github.com/Estimote/Android-SDK)
 
 # Sample RN Android applications
+
+[Event Based Multi-threaded android bean app](https://github.com/pbauermeister/android-bean-stuff)

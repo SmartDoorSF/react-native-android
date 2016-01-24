@@ -59,55 +59,68 @@ var BT = NativeModules.BeanTransceiver;
 var BLEModule = React.createClass({
 //  mixins: [responderMixin],             // use the mixin
     componentWillMount: function() {
+        this._bleHandler.init();
     },
     componentDidMount: function() {
     },
-  render: function() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-        <Button
-            style={{fontSize: 20, color: 'green'}}
-            styleDisabled={{color: 'red'}}
-            onPress={this._handlePress}
-        >
-        Press Me!
-        </Button>
+    render: function() {
+        return (
+          <View style={styles.container}>
+            <Text style={styles.welcome}>
+              Welcome to React Native!
+            </Text>
+            <Text style={styles.instructions}>
+              To get started, edit index.android.js
+            </Text>
+            <Text style={styles.instructions}>
+              Shake or press menu button for dev menu
+            </Text>
+            <Button
+                style={{fontSize: 20, color: 'green'}}
+                styleDisabled={{color: 'red'}}
+                onPress={this._handlePress}
+            >
+            Press Me!
+            </Button>
 
-        <Button
-            style={{fontSize: 20, color: 'green'}}
-            styleDisabled={{color: 'red'}}
-            onPress={this._bleHandler.func1}
-        >
-        Enable BLE!
-        </Button>
-      </View>
-    );
-  },
+            <Button
+                style={{fontSize: 20, color: 'green'}}
+                styleDisabled={{color: 'red'}}
+                onPress={this._bleHandler.enableBLE}
+            >
+            Enable BLE!
+            </Button>
 
-  _handlePress(event) {
-    console.log('Pressed!');
-  },
+            <Button
+                style={{fontSize: 20, color: 'green'}}
+                styleDisabled={{color: 'red'}}
+                onPress={this._bleHandler.disableBLE}
+            >
+            Disable BLE!
+            </Button>
+            <Button
+                style={{fontSize: 20, color: 'green'}}
+                styleDisabled={{color: 'red'}}
+                onPress={this._bleHandler.startDiscovery}
+            >
+            Start Discovery
+            </Button>
+            <Button
+                style={{fontSize: 20, color: 'green'}}
+                styleDisabled={{color: 'red'}}
+                onPress={this._bleHandler.cancelDiscovery}
+            >
+            Cancel Discovery
+            </Button>
+          </View>
+        );
+    },
 
-  _bleHandler: {
-    enableBLE       : function() {
-                        if (BT.hasBLE()) {
-                            BT.enableBLE();
-                        }
-                      },
-    disableBLE      : BT.disableBLE,
-    isBLEenabled    : BT.isBLEenabled,
-    startDiscovery  : BT.startDiscovery,
-    cancelDiscovery : BT.cancelDiscovery,
-  },
+    _handlePress(event) {
+        console.log('Pressed!');
+    },
+
+    _bleHandler: BT,
 });
 
 var styles = StyleSheet.create({

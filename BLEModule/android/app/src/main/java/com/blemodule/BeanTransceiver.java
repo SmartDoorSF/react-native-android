@@ -30,22 +30,30 @@ public class BeanTransceiver extends ReactContextBaseJavaModule {
 
     private boolean btOn;
 
-    public void init(Context context) {
-        Log.d(TAG, "*** BeanTransceiver Initialized!");
+    @ReactMethod
+    public void init() {
+        if (this.hasBLE()) {
+            Log.d(TAG, "*** BeanTransceiver Initialized!");
 
-        // init BT
-        if (bluetoothAdapter == null) {
-            bluetoothAdapter = null;
+            // init BT
+            if (bluetoothAdapter == null) {
+                bluetoothAdapter = null;
+            }
+        } else {
+            Log.d(TAG, "Platform doesn't support BLE!");
         }
     }
 
     public void uninit() {
         Log.d(TAG, "*** BeanTransceiver uninit is invoked!");
     }
+
+    @ReactMethod
     public boolean isScanning() {
         return scanning;
     }
 
+    @ReactMethod
     public boolean isResetting() {
         return resetting;
     }
@@ -96,6 +104,7 @@ public class BeanTransceiver extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void startDiscovery() {
+        this.enableBLE();
         BeanManager.getInstance().startDiscovery(listener);
     }
 
