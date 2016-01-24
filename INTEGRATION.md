@@ -46,3 +46,5 @@ References:
 3. [Android Beacon Library](https://github.com/AltBeacon/android-beacon-library)
 
 4. [Android SD](https://github.com/Estimote/Android-SDK)
+
+# Sample RN Android applications

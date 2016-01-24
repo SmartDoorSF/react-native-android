@@ -115,6 +115,8 @@ public class BeanTransceiver extends ReactContextBaseJavaModule {
             Log.d(TAG, "BLE is enabled!");
             bluetoothAdapter.enable();
             btOn = true;
+        } else {
+            Log.d(TAG, "BEL is already enabled!");
         }
     }
 

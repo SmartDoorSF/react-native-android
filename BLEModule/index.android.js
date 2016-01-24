@@ -30,13 +30,17 @@
  *  //        });
  */
 
+//NativeModules.CustomizedModule.show("Hello!");
+//NativeModules.BluetoothModule.show("Bluetooth!");
+//NativeModules.BluetoothModule.connect();
+
 
 'use strict';
 
 var SampleButton = require('./js/SampleButton');
-var Button = require('./js/Button');
-
+var Button = require('react-native-button');
 var React = require('react-native');
+
 var {
   AppRegistry,
   StyleSheet,
@@ -49,16 +53,8 @@ var {
   DeviceEventEmitter,
 } = React;
 
-NativeModules.CustomizedModule.show("Hello!");
-NativeModules.BluetoothModule.show("Bluetooth!");
-//NativeModules.BluetoothModule.connect();
-
+// Native modules
 var BT = NativeModules.BeanTransceiver;
-
-if (BT.hasBLE()) {
-    BT.enableBLE();
-}
-BT.startDiscovery();
 
 var BLEModule = React.createClass({
 //  mixins: [responderMixin],             // use the mixin
@@ -89,9 +85,9 @@ var BLEModule = React.createClass({
         <Button
             style={{fontSize: 20, color: 'green'}}
             styleDisabled={{color: 'red'}}
-            onPress={this._handlePress}
+            onPress={this._bleHandler.func1}
         >
-        Press Me!
+        Enable BLE!
         </Button>
       </View>
     );
@@ -99,6 +95,18 @@ var BLEModule = React.createClass({
 
   _handlePress(event) {
     console.log('Pressed!');
+  },
+
+  _bleHandler: {
+    enableBLE       : function() {
+                        if (BT.hasBLE()) {
+                            BT.enableBLE();
+                        }
+                      },
+    disableBLE      : BT.disableBLE,
+    isBLEenabled    : BT.isBLEenabled,
+    startDiscovery  : BT.startDiscovery,
+    cancelDiscovery : BT.cancelDiscovery,
   },
 });
 
