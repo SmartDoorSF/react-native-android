@@ -52,7 +52,6 @@ public class BeanTransceiver extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public boolean hasBLE() {
-        Log.d(TAG, "No BLE!");
         return bluetoothAdapter != null;
     }
 
@@ -71,7 +70,7 @@ public class BeanTransceiver extends ReactContextBaseJavaModule {
         @Override
         public void onBeanDiscovered(Bean bean, int rssi) {
             int nb = BeanManager.getInstance().getBeans().size();
-            Log.i(TAG, "Scanning... (" + nb + ") Discovered \"" + bean.getDevice().getName() + ".");
+            Log.i(TAG, "Scanning... (" + nb + ") Discovered \"" + bean.getDevice().getName() + ".\"");
             Log.d(TAG, "- rssi:   " + rssi);
             Log.d(TAG, "- device: " + bean.getDevice());
 //            beans.add(bean);
@@ -96,8 +95,13 @@ public class BeanTransceiver extends ReactContextBaseJavaModule {
     };
 
     @ReactMethod
-    public void discovery() {
+    public void startDiscovery() {
         BeanManager.getInstance().startDiscovery(listener);
+    }
+
+    @ReactMethod
+    public void cancelDiscovery() {
+        BeanManager.getInstance().cancelDiscovery();
     }
 
     @ReactMethod

@@ -1,51 +1,97 @@
-// Add a JS button
+'use strict';
+
 var React = require('react-native');
 var {
-    Platform,
-    TouchableHighlight,
-    TouchableNativeFeedback,
-    StyleSheet,
-    View,
-    Text
+  PropTypes,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } = React;
 
-var SampleButton = React.createClass({
-    buttonClicked: function() {
-        console.log('button clicked');
-    },
-    render: function() {
-        var TouchableElement = TouchableHighlight;
-        if (Platform.OS === 'android') {
-            TouchableElement = TouchableNativeFeedback;
-        }
-        return (
-            <View style={buttonStyles.container}>
-              <Text style={buttonStyles.welcome}>
-                A sample button/scanning bluetooth device!
-              </Text>
-              <TouchableElement
-                onPress={this.buttonClicked}>
-                <View>
-                    <Text>SCAN</Text>
-                </View>
-              </TouchableElement>
-            </View>
-        )
+var coalesceNonElementChildren = require('./coalesceNonElementChildren');
+
+var systemButtonOpacity = 0.2;
+
+var Button = React.createClass({
+  propTypes: {
+    ...TouchableOpacity.propTypes,
+    disabled: PropTypes.bool,
+    style: Text.propTypes.style,
+    styleDisabled: Text.propTypes.style,
+  },
+
+  render() {
+    var touchableProps = {
+      activeOpacity: this._computeActiveOpacity(),
+    };
+    if (!this.props.disabled) {
+      touchableProps.onPress = this.props.onPress;
+      touchableProps.onPressIn = this.props.onPressIn;
+      touchableProps.onPressOut = this.props.onPressOut;
+      touchableProps.onLongPress = this.props.onLongPress;
     }
-})
 
-var buttonStyles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    return (
+      <TouchableOpacity {...touchableProps} testID={this.props.testID}>
+        {this._renderGroupedChildren()}
+      </TouchableOpacity>
+    );
   },
-  welcome: {
-    fontSize: 20,
+
+  _renderGroupedChildren() {
+    var {disabled} = this.props
+    var style = [
+      styles.text,
+      disabled ? styles.disabledText : null,
+      this.props.style,
+      disabled ? this.props.styleDisabled : null,
+    ];
+
+    var children = coalesceNonElementChildren(this.props.children, (children, index) => {
+      return (
+        <Text key={index} style={style}>
+          {children}
+        </Text>
+      );
+    });
+
+    switch (children.length) {
+      case 0:
+        return null;
+      case 1:
+        return children[0];
+      default:
+        return <View style={styles.group}>{children}</View>;
+    }
+  },
+
+  _computeActiveOpacity() {
+    if (this.props.disabled) {
+      return 1;
+    }
+    return this.props.activeOpacity != null ?
+      this.props.activeOpacity :
+      systemButtonOpacity;
+  },
+});
+
+var styles = StyleSheet.create({
+  text: {
+    color: '#007aff',
+    fontFamily: '.HelveticaNeueInterface-MediumP4',
+    fontSize: 17,
+    fontWeight: 'bold',
     textAlign: 'center',
-    margin: 10,
   },
-})
+  disabledText: {
+    color: '#dcdcdc',
+  },
+  group: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+});
 
-module.exports = SampleButton;
+module.exports = Button;

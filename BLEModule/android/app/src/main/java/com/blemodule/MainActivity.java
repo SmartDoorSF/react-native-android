@@ -24,8 +24,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-
-
 // Toast
 
 //AppCompatActivity
@@ -82,9 +80,6 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
             Intent enableBT = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBT, REQUEST_BLUETOOTH);
         }
-
-
-        // Perform
     }
 
     @Override

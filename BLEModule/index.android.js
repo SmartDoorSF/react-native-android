@@ -2,11 +2,40 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
+
+/**
+ *
+ *       // Altbeacon searching
+ *       // Current BlueBean UUID is 0xFF10
+ *       // Current BlueBean UUID is 0xFF10
+ *        var uuid = "A495FF10C5B14B44B5121370F02D74DE";
+ *        RNABeacon.startMonitoring(uuid);
+ */
+
+/**
+ * NativeModules.BluetoothModule.listDeviceCB(
+ *    (msg) => {
+ *        console.log(msg);
+ *    },
+ *    (deviceName) => {
+ *        console.log("pairedDevice: " + deviceName);
+ *    }
+ *);
+ */
+
+/**
+ * //        DeviceEventEmitter.addListener('startMonitoring', function(e: Event) {
+ * //            console.log("startMonitoring!!!");
+ *  //            console.log("Event:", e); // null
+ *  //        });
+ */
+
+
 'use strict';
 
-var SampleButton = require('./js/button');
+var SampleButton = require('./js/SampleButton');
+var Button = require('./js/Button');
 
-//var Button = require('react-native-button');
 var React = require('react-native');
 var {
   AppRegistry,
@@ -24,43 +53,18 @@ NativeModules.CustomizedModule.show("Hello!");
 NativeModules.BluetoothModule.show("Bluetooth!");
 //NativeModules.BluetoothModule.connect();
 
-//NativeModules.BluetoothModule.listDeviceCB(
-//    (msg) => {
-//        console.log(msg);
-//    },
-//    (deviceName) => {
-//        console.log("pairedDevice: " + deviceName);
-//    }
-//);
+var BT = NativeModules.BeanTransceiver;
 
-// AltBeacon
-//var RNABeacon = NativeModules.RNABeacon;
-//console.log("loadNativeModule: ", RNABeacon);
-
-var BeanTransceiver = NativeModules.BeanTransceiver;
-
-if (BeanTransceiver.hasBLE()) {
-    BeanTransceiver.enableBLE();
+if (BT.hasBLE()) {
+    BT.enableBLE();
 }
-BeanTransceiver.discovery();
+BT.startDiscovery();
 
 var BLEModule = React.createClass({
 //  mixins: [responderMixin],             // use the mixin
     componentWillMount: function() {
-//        DeviceEventEmitter.addListener('startMonitoring', function(e: Event) {
-//            console.log("startMonitoring!!!");
-//            console.log("Event:", e); // null
-//        });
-        DeviceEventEmitter.addListener('startMonitoring', function(data) {
-            console.log('What data? ', data);
-        });
     },
     componentDidMount: function() {
-        // Altbeacon searching
-        // Current BlueBean UUID is 0xFF10
-        // Current BlueBean UUID is 0xFF10
-//        var uuid = "A495FF10C5B14B44B5121370F02D74DE";
-//        RNABeacon.startMonitoring(uuid);
     },
   render: function() {
     return (
@@ -74,10 +78,28 @@ var BLEModule = React.createClass({
         <Text style={styles.instructions}>
           Shake or press menu button for dev menu
         </Text>
-        <SampleButton/>
+        <Button
+            style={{fontSize: 20, color: 'green'}}
+            styleDisabled={{color: 'red'}}
+            onPress={this._handlePress}
+        >
+        Press Me!
+        </Button>
+
+        <Button
+            style={{fontSize: 20, color: 'green'}}
+            styleDisabled={{color: 'red'}}
+            onPress={this._handlePress}
+        >
+        Press Me!
+        </Button>
       </View>
     );
-  }
+  },
+
+  _handlePress(event) {
+    console.log('Pressed!');
+  },
 });
 
 var styles = StyleSheet.create({
@@ -100,4 +122,3 @@ var styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('BLEModule', () => BLEModule);
-//AppRegistry.registerComponent('BLEModule2',() => BLEModule2);
