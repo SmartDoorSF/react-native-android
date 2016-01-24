@@ -50,7 +50,9 @@ public class BeanTransceiver extends ReactContextBaseJavaModule {
         return resetting;
     }
 
-    public boolean hasBle() {
+    @ReactMethod
+    public boolean hasBLE() {
+        Log.d(TAG, "No BLE!");
         return bluetoothAdapter != null;
     }
 
@@ -87,23 +89,26 @@ public class BeanTransceiver extends ReactContextBaseJavaModule {
 
             for (Bean bean: beans) {
                 Log.d(TAG, bean.getDevice().getName());              // "Bean"
-                Toast.makeText(getReactApplicationContext(), "CONNECTED TO BEAN". Toast.LENGTH_LONG).show();
+                Toast.makeText(getReactApplicationContext(), "CONNECTED TO BEAN", Toast.LENGTH_LONG).show();
                 Log.d(TAG, bean.getDevice().getAddress());           // "B4:99:4C:1E:BC:75" (example)
             }
         }
     };
 
     @ReactMethod
-    public void startDiscovery() {
+    public void discovery() {
         BeanManager.getInstance().startDiscovery(listener);
     }
 
     @ReactMethod
-    public boolean isBLEenabled() { return bluetoothAdapter.isEnabled(); }
+    public boolean isBLEenabled() {
+        return bluetoothAdapter.isEnabled();
+    }
 
     @ReactMethod
     public void enableBLE() {
         if (!btOn) {
+            Log.d(TAG, "BLE is enabled!");
             bluetoothAdapter.enable();
             btOn = true;
         }

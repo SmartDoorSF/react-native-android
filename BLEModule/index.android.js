@@ -41,8 +41,8 @@ var BeanTransceiver = NativeModules.BeanTransceiver;
 
 if (BeanTransceiver.hasBLE()) {
     BeanTransceiver.enableBLE();
-    BeanTransceiver.startDiscovery();
 }
+BeanTransceiver.discovery();
 
 var BLEModule = React.createClass({
 //  mixins: [responderMixin],             // use the mixin
