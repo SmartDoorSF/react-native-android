@@ -266,3 +266,4 @@ public class RNABeacon extends ReactContextBaseJavaModule {
         }catch (Exception e){}
     }
 }
+

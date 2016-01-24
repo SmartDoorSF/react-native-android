@@ -53,7 +53,6 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
                 .addPackage(new MainReactPackage())
                 .addPackage(new SamplePackage())
                 .addPackage(new DevicePairPackage())
-                .addPackage(new RNABeaconPackage(getApplicationContext()))
                 .addPackage(new BeanTransceiverPackage())
                 .setUseDeveloperSupport(BuildConfig.DEBUG)
                 .setInitialLifecycleState(LifecycleState.RESUMED)

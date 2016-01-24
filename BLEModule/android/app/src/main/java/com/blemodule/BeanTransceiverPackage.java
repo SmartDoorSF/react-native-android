@@ -19,7 +19,6 @@ public class BeanTransceiverPackage implements ReactPackage {
 
         // Register the module
         modules.add(new BeanTransceiver(reactContext));
-
         return modules;
     }
 

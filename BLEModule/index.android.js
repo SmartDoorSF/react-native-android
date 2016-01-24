@@ -34,8 +34,15 @@ NativeModules.BluetoothModule.show("Bluetooth!");
 //);
 
 // AltBeacon
-var RNABeacon = NativeModules.RNABeacon;
-console.log("loadNativeModule: ", RNABeacon);
+//var RNABeacon = NativeModules.RNABeacon;
+//console.log("loadNativeModule: ", RNABeacon);
+
+var BeanTransceiver = NativeModules.BeanTransceiver;
+
+if (BeanTransceiver.hasBLE()) {
+    BeanTransceiver.enableBLE();
+    BeanTransceiver.startDiscovery();
+}
 
 var BLEModule = React.createClass({
 //  mixins: [responderMixin],             // use the mixin
@@ -51,8 +58,9 @@ var BLEModule = React.createClass({
     componentDidMount: function() {
         // Altbeacon searching
         // Current BlueBean UUID is 0xFF10
-        var uuid = "A495FF10C5B14B44B5121370F02D74DE";
-        RNABeacon.startMonitoring(uuid);
+        // Current BlueBean UUID is 0xFF10
+//        var uuid = "A495FF10C5B14B44B5121370F02D74DE";
+//        RNABeacon.startMonitoring(uuid);
     },
   render: function() {
     return (

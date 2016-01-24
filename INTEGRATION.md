@@ -37,4 +37,12 @@ $ curl -o .flowconfig https://raw.githubusercontent.com/facebook/react-native/ma
 # Question
 How JavaScript to control app behavior when user interact with hardware back button?
 
+References:
 
+1. [Bean Android SDK](https://github.com/PunchThrough/Bean-Android-SDK)
+
+2. [React Native Alt Beacon](https://github.com/octavioturra/react-native-alt-beacon)
+
+3. [Android Beacon Library](https://github.com/AltBeacon/android-beacon-library)
+
+4. [Android SD](https://github.com/Estimote/Android-SDK)
